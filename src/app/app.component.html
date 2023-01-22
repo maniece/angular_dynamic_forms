@@ -1,0 +1,47 @@
+<hello name="{{ name }}"></hello>
+<p>Start editing to see some magic happen :)</p>
+
+<form [formGroup]="registrationForm" class="" (ngSubmit)="OnSubmit()">
+  <div class="form-element">
+    <input
+      type="text"
+      formControlName="firstname"
+      placeholder="Enter First Name"
+    />
+  </div>
+  <div class="form-element">
+    <input
+      type="text"
+      formControlName="lastname"
+      placeholder="Enter Last Name"
+    />
+  </div>
+  <div class="form-element">
+    <div formArrayName="address">
+      <div
+        *ngFor="
+          let com of registrationForm.get('address')['controls'];
+          let i = index
+        "
+      >
+        <input
+          type="text"
+          [formControlName]="i"
+          placeholder="Enter Address {{ i + 1 }}"
+        />
+        <button class="btn btn-danger py-0" (click)="removeAddress(i)">Del</button>
+      </div>
+    </div>
+  </div>
+  <div class="form-element">
+  <input
+    class=""
+    type="button"
+    value="Add Address"
+    (click)="addAddress()"
+  /><br />
+</div>
+<div class="form-element">
+  <input class="" type="submit" value="Submit" />
+</div>
+</form>

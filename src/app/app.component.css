@@ -1,0 +1,7 @@
+p {
+  font-family: Lato;
+}
+
+.form-element, .form-element input{
+  margin: 3px;
+}
